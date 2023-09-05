@@ -1,7 +1,7 @@
 # gui_highlighter
 
 ## How to run
-  Put *gui_highlighter.py* in the same directory as the xml/png files to be proccessed. Assure that each xml/png pair follows the naming convention *<app.package>-<screen#>.ext*. Then, run `python gui_highlighter filename1 filename2...` where *filename* corresponds to *<app.package>-<screen#>* for each xml/png pair.
+  Put *gui_highlighter* in the same directory as the xml/png files to be proccessed. Assure that each xml/png pair follows the naming convention *<app.package>-<screen#>.ext*. Then, run `python gui_highlighter filename1 filename2...` where *filename* corresponds to *<app.package>-<screen#>* for each xml/png pair.
 
 ## Output
  Annotated images can be found in the *gui_highlighter_output* folder of the current directory.
