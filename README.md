@@ -8,3 +8,6 @@
 
 ## Description
   *gui_highlighter.py* utilizes python's ElementTree module to parse inputted xml files and represent them as trees. It iterates through these trees to find leaf nodes, then stores the boundary coordinates of the corresponding GUI elements. Finally, it uses PIL to draw rectangles at these coordinates over the inputted png files, and saves the resulting images.
+
+###### Note
+  Per the discussion on Piazza, I fixed *com.apalon.ringtones.xml* by adding a closing `</node` tag.
