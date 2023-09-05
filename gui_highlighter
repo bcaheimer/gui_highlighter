@@ -1,0 +1,33 @@
+from PIL import Image, ImageDraw
+import os, sys, re, xml.etree.ElementTree as ET
+ 
+
+def main (filename):
+    # Parse xml file and store as tree
+    tree = ET.parse(filename+'.xml')
+    root = tree.getroot()
+
+    # Find nodes in tree with no children (leaves) and store coordinates of corresponding gui elements
+    coord_list = []
+    for node in root.iter():
+        if len(node) == 0:
+            node_coords = re.findall('\d+', node.attrib['bounds'])
+            coord_list.append(list(map(int, node_coords)))
+
+    # Draw rectangle around each gui element based on coordinates
+    image = Image.open(filename+'.png')
+    draw = ImageDraw.Draw(image)
+    for coord in coord_list:
+        draw.rectangle(coord, outline='yellow', width=8)
+    
+    # Save image in output folder
+    image.save('./gui_highlighter_output/' + filename + '_annotated.png')
+
+if __name__ == "__main__":
+    # Create output folder in current directory if none exists
+    if not os.path.exists('./gui_highlighter_output'):
+        os.mkdir('./gui_highlighter_output')
+
+    # Send each file name given in command line to main function
+    for i in range(1, len(sys.argv)):
+        main(sys.argv[i])
